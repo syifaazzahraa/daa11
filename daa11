@@ -1,0 +1,292 @@
+DAA11.ipynb
+DAA11.ipynb_
+[ ]
+# a-----b
+# /     /
+# /     /
+# c-----d-----e
+[ ]
+# Create the dictionary with graph elements
+graph = { "a" : ["b","c"],
+          "b" : ["a", "d"],
+          "c" : ["a", "d"],
+          "d" : ["e"],
+          "e" : ["d"]
+        }
+
+# Print the graph
+print(graph)
+{'a': ['b', 'c'], 'b': ['a', 'd'], 'c': ['a', 'd'], 'd': ['e'], 'e': ['d']}
+[ ]
+# T-----U-----V
+# |           |
+# W-----------X  
+# |           |  
+# Z           S
+[ ]
+# Create the dictionary with graph elements
+graph = { "T" : ["U","W"],
+          "U" : ["V","T"],
+          "V" : ["U","X"],
+          "W" : ["X","Z","T"],
+          "X" : ["W","S","V"],
+          "Z" : ["W"],
+          "S" : ["X"]
+        }
+
+# Print the graph
+print(graph)
+{'T': ['U', 'W'], 'U': ['V', 'T'], 'V': ['U', 'X'], 'W': ['X', 'Z', 'T'], 'X': ['W', 'S', 'V'], 'Z': ['W'], 'S': ['X']}
+[ ]
+# R-----O-----M
+# |     |     |
+# L-----P-----N 
+[ ]
+# Create the dictionary with graph elements
+graph = { "R" : ["O","L"],
+          "O" : ["R","P","M"],
+          "M" : ["O","N"],
+          "L" : ["R","P"],
+          "P" : ["L","O","N"],
+          "N" : ["P","M"]
+        }
+
+# Print the graph
+print(graph)
+{'R': ['O', 'L'], 'O': ['R', 'P', 'M'], 'M': ['O', 'N'], 'L': ['R', 'P'], 'P': ['L', 'O', 'N'], 'N': ['P', 'M']}
+[ ]
+class graph:
+    def _init_(self,gdict=None):
+        if gdict is None:
+            gdict = []
+        self.gdict = gdict
+
+# Get the keys of the dictionary
+    def getVertices(self):
+        return list(self.gdict.keys())
+
+# Create the dictionary with graph elements
+graph_elements = { "a" : ["b","c"],
+                 "b" : ["a", "d"],
+                 "c" : ["a", "d"],
+                 "d" : ["e"],
+                 "e" : ["d"]
+                 }
+                 
+g = graph(graph_elements)
+
+print(g.getVertices())
+['a', 'b', 'c', 'd', 'e']
+[ ]
+class graph:
+    def _init_(self,gdict=None):
+        if gdict is None:
+            gdict = []
+        self.gdict = gdict
+
+# Get the keys of the dictionary
+    def getVertices(self):
+        return list(self.gdict.keys())
+
+# Create the dictionary with graph elements
+graph_elements = { "T" : ["U","W"],
+                 "U" : ["V","T"],
+                 "V" : ["U","X"],
+                 "W" : ["X","Z","T"],
+                 "X" : ["W","S","V"],
+                 "Z" : ["W"],
+                 "S" : ["X"]
+                  }
+
+g = graph(graph_elements)
+
+print(g.getVertices())
+['T', 'U', 'V', 'W', 'X', 'Z', 'S']
+[ ]
+class graph:
+    def _init_(self,gdict=None):
+        if gdict is None:
+            gdict = []
+        self.gdict = gdict
+
+# Get the keys of the dictionary
+    def getVertices(self):
+        return list(self.gdict.keys())
+
+# Create the dictionary with graph elements
+graph_elements = { "R" : ["O","L"],
+                 "O" : ["R","P","M"],
+                 "M" : ["O","N"],
+                 "L" : ["R","P"],
+                 "P" : ["L","O","N"],
+                 "N" : ["P","M"]
+                 }
+            
+g = graph(graph_elements)
+
+print(g.getVertices())
+['R', 'O', 'M', 'L', 'P', 'N']
+[ ]
+class graph:
+    def _init_(self,gdict=None):
+        if gdict is None:
+            gdict = {}
+        self.gdict = gdict
+
+    def edges(self):
+        return self.findedges()
+
+# Find the distinct list of edges
+    def findedges(self):
+        edgename = []
+        for vrtx in self.gdict:
+            for nxtvrtx in self.gdict[vrtx]:
+                if {nxtvrtx, vrtx} not in edgename:
+                    edgename.append({vrtx, nxtvrtx})
+        return edgename
+
+# Create the dictionary with graph elements
+graph_elements = { "a" : ["b","c"],
+                 "b" : ["a", "d"],
+                 "c" : ["a", "d"],
+                 "d" : ["e"],
+                 "e" : ["d"]
+                 }
+                 
+g = graph(graph_elements)
+
+print(g.edges())
+[{'b', 'a'}, {'c', 'a'}, {'d', 'b'}, {'c', 'd'}, {'d', 'e'}]
+[ ]
+class graph:
+    def _init_(self,gdict=None):
+        if gdict is None:
+            gdict = {}
+        self.gdict = gdict
+
+    def edges(self):
+        return self.findedges()
+
+# Find the distinct list of edges
+    def findedges(self):
+        edgename = []
+        for vrtx in self.gdict:
+            for nxtvrtx in self.gdict[vrtx]:
+                if {nxtvrtx, vrtx} not in edgename:
+                    edgename.append({vrtx, nxtvrtx})
+        return edgename
+
+# Create the dictionary with graph elements
+graph_elements = { "T" : ["U","W"],
+                 "U" : ["V","T"],
+                 "V" : ["U","X"],
+                 "W" : ["X","Z","T"],
+                 "X" : ["W","S","V"],
+                 "Z" : ["W"],
+                 "S" : ["X"]
+                 }
+
+g = graph(graph_elements)
+
+print(g.edges())
+[{'U', 'T'}, {'T', 'W'}, {'U', 'V'}, {'V', 'X'}, {'W', 'X'}, {'W', 'Z'}, {'S', 'X'}]
+[ ]
+class graph:
+    def _init_(self,gdict=None):
+        if gdict is None:
+          gdict = {}
+        self.gdict = gdict
+
+    def getVertices(self):
+        return list(self.gdict.keys())
+
+# Add the vertex as a key
+    def addVertex(self, vrtx):
+       if vrtx not in self.gdict:
+            self.gdict[vrtx] = []
+
+# Create the dictionary with graph elements
+graph_elements = { "a" : ["b","c"],
+                 "b" : ["a", "d"],
+                 "c" : ["a", "d"],
+                 "d" : ["e"],
+                 "e" : ["d"]
+                 }
+                 
+g = graph(graph_elements)
+
+g.addVertex("f")
+
+print(g.getVertices())
+['a', 'b', 'c', 'd', 'e', 'f']
+[ ]
+class graph:
+    def _init_(self,gdict=None):
+        if gdict is None:
+          gdict = {}
+        self.gdict = gdict
+
+    def getVertices(self):
+        return list(self.gdict.keys())
+
+# Add the vertex as a key
+    def addVertex(self, vrtx):
+       if vrtx not in self.gdict:
+            self.gdict[vrtx] = []
+
+# Create the dictionary with graph elements
+graph_elements = { "R" : ["O","L"],
+                 "O" : ["R","P","M"],
+                 "M" : ["O","N"],
+                 "L" : ["R","P"],
+                 "P" : ["L","O","N"],
+                 "N" : ["P","M"]
+                 }
+                 
+g = graph(graph_elements)
+
+g.addVertex("Z")
+
+print(g.getVertices())
+['R', 'O', 'M', 'L', 'P', 'N', 'Z']
+[ ]
+class graph:
+    def _init_(self,gdict=None):
+        if gdict is None:
+            gdict = {}
+        self.gdict = gdict
+
+    def edges(self):
+        return self.findedges()
+
+# Add the new edge
+    def AddEdge(self, edge):
+        edge = set(edge)
+        (vrtx1, vrtx2) = tuple(edge)
+        if vrtx1 in self.gdict:
+            self.gdict[vrtx1].append(vrtx2)
+        else:
+            self.gdict[vrtx1] = [vrtx2]
+
+# List the edge names
+    def findedges(self):
+        edgename = []
+        for vrtx in self.gdict:
+            for nxtvrtx in self.gdict[vrtx]:
+                if {nxtvrtx, vrtx} not in edgename:
+                    edgename.append({vrtx, nxtvrtx})
+        return edgename
+
+# Create the dictionary with graph elements
+graph_elements = { "a" : ["b","c"],
+                 "b" : ["a", "d"],
+                 "c" : ["a", "d"],
+                 "d" : ["e"],
+                 "e" : ["d"]
+                 }
+                 
+g = graph(graph_elements)
+g.AddEdge({'a','e'})
+g.AddEdge({'e','c'})
+print(g.edges())
+[{'b', 'a'}, {'c', 'a'}, {'d', 'b'}, {'c', 'd'}, {'c', 'e'}, {'d', 'e'}, {'e', 'a'}]
